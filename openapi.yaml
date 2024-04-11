@@ -50,7 +50,7 @@ paths:
                     description: OK
     /securechangeworkflow/api/securechange/workflows/active_workflows.json?type=RULE_DECOMMISSION:
         get:
-            operationId: UnusedRulesDeviceInformation
+            operationId: RuleDecommissionWorkflows
             summary: Rule decommission workflow list for mitigating security issues, such as disabling unused rules.
             responses:
                 200:
