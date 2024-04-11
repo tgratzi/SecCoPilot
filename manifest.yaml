@@ -1,9 +1,11 @@
 Descriptor:
-  Name: Lookup for unused rules
-  DisplayName: Lookup for unused rules details
-  Description: Cleaning unused rules in firewalls is an essential best practice for maintaining the security, performance, and manageability of your network infrastructure.
+    Name: Lookup for unused rules
+    DisplayName: Lookup for unused rules details
+    Description: Cleaning unused rules in firewalls is an essential best practice for maintaining the security, performance, and manageability of your network infrastructure.
+    SupportedAuthTypes:
+        - Basic
 
 SkillGroups:
-  - Format: API
-    Settings:
-      OpenApiSpecUrl: https://raw.githubusercontent.com/SecureHats/security-copilot/main/Lesson%202/openapi.yaml
+    -   Format: API
+        Settings:
+            OpenApiSpecUrl: https://raw.githubusercontent.com/tgratzi/SecCoPilot/master/openapi.yaml

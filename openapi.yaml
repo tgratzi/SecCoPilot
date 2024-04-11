@@ -1,32 +1,43 @@
 openapi: 3.0.0
 
 info:
-    title: Lesson 2 lookup Harry Potter
-    description: Lesson 2 - Basic request to lookup Harry Potter information.
-    version: "0.2.2"
+    title: Lookup for unused rules
+    description: Lookup for unused rules in device.
+    version: "1.0.0"
 
 servers:
     - url: https://wizard-world-api.herokuapp.com/
 
 paths:
-    /houses:
+    /securetrack/api/rule_search/{deviceId}.json?lasthitgreater:%2030%20rule.isdisabled:false%20action:allow:
         get:
-            operationId: gethouses
-            summary: Retrieve all Harry Potter houses
-            responses:
-                "200":
-                description: Success
-    /wizards:
-        get:
-            operationId: getwizards
-            summary: Retrieve Harry Potter wizards
+            operationId: UnusedRules
+            summary: Retrieve all unused rules from a device
             parameters:
-                - in: query
-                  name: FirstName
-                  schema:
-                      type: string
-                  required: true
-                  description: The name of the wizard
+                -   in: path
+                    name: deviceId
+                    schema:
+                        type: string
+                    required: true
+                    description: The device id to lookup for unused rules
             responses:
-                "200":
+                200:
+                    description: Success
+                404:
+                    description: Value is missing or not valid
+    /securetrack/api/rule_search.json?lasthitgreater:%2030%20rule.isdisabled:false%20action:allow:
+        get:
+            operationId: UnusedRulesPerDevice
+            summary: Unused rule count per device
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: Value is missing or not valid
+    /securetrack/api/devices.json:
+        get:
+            operationId: GetDevices
+            summary: Get all devices
+            responses:
+                200:
                     description: OK
