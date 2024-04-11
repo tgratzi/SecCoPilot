@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
     title: Lookup for unused rules
     description: Lookup for unused rules in device.
-    version: "1.0.0"
+    version: "1.0.1"
 
 servers:
     - url: https://c1a1-108-20-176-8.ngrok-free.app/
