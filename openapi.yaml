@@ -9,7 +9,7 @@ servers:
     - url: https://c1a1-108-20-176-8.ngrok-free.app/
 
 paths:
-    /securetrack/api/rule_search/{deviceId}.json?lasthitgreater:%2030%20rule.isdisabled:false%20action:allow:
+    /securetrack/api/rule_search/{deviceId}.json?lasthitgreater:%2030%20rule.isdisabled:false%20action:allow&start:0&count:10:
         get:
             operationId: UnusedRules
             summary: Retrieve all unused rules from a device
@@ -34,10 +34,17 @@ paths:
                     description: OK
                 404:
                     description: Value is missing or not valid
-    /securetrack/api/devices.json:
+    /securetrack/api/devices/{deviceId}.json:
         get:
             operationId: GetDevices
             summary: Get all devices
+            parameters:
+                -   in: path
+                    name: deviceId
+                    schema:
+                        type: string
+                    required: true
+                    description: The device id to lookup for unused rules
             responses:
                 200:
                     description: OK
