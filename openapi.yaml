@@ -6,7 +6,7 @@ info:
     version: "1.0.0"
 
 servers:
-    - url: https://wizard-world-api.herokuapp.com/
+    - url: https://c1a1-108-20-176-8.ngrok-free.app/
 
 paths:
     /securetrack/api/rule_search/{deviceId}.json?lasthitgreater:%2030%20rule.isdisabled:false%20action:allow:
