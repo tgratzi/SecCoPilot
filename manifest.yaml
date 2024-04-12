@@ -1,7 +1,7 @@
 Descriptor:
-    Name: Lookup for unused rules
-    DisplayName: Lookup for unused rules details
-    Description: Cleaning unused rules in firewalls is an essential best practice for maintaining the security, performance, and manageability of your network infrastructure.
+    Name: Tufin Firewall Management
+    DisplayName: Tufin Firewall Management
+    Description: Cleaning unused rules in firewalls for maintaining the security, performance, and manageability of your network infrastructure.
     SupportedAuthTypes:
         - Basic
 

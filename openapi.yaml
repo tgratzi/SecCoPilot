@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 info:
-    title: Lookup for unused rules
-    description: Lookup for unused rules in device.
+    title: Get unused rules using TOS
+    description: Get unused rules using TOS.
     version: 1.0.0
 
 servers:
@@ -11,7 +11,7 @@ servers:
 paths:
     /securetrack/api/rule_search.json:
         get:
-            operationId: UnusedRulesPerDevice
+            operationId: UnusedRules
             summary: Retrieve unused rule count based on the device id in SecureTrack.
             parameters:
                 -   $ref: '#/components/parameters/searchText'
@@ -40,7 +40,7 @@ paths:
                     description: Value is missing or not valid
     /securetrack/api/rule_search/{deviceId}.json:
         get:
-            operationId: UnusedRules
+            operationId: UnusedRulesPerDevice
             summary: Retrieve unused rules from a device based on the device id.
             parameters:
                 -   in: path
@@ -126,5 +126,5 @@ components:
             schema:
                 type: integer
                 default: 3
-                minimum: 1
+                minimum: 3
                 maximum: 10
