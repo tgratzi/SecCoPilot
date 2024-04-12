@@ -3,35 +3,74 @@ openapi: 3.0.0
 info:
     title: Lookup for unused rules
     description: Lookup for unused rules in device.
-    version: "1.0.1"
+    version: 1.0.0
 
 servers:
     - url: https://86bd-108-20-176-8.ngrok-free.app/
 
 paths:
-    /securetrack/api/rule_search/{deviceId}.json?lasthitgreater:%2030%20rule.isdisabled:false%20action:allow&start=0&count=3:
+    /securetrack/api/rule_search.json:
+        get:
+            operationId: UnusedRulesPerDevice
+            summary: Retrieve unused rule count based on the device id in SecureTrack.
+            parameters:
+                -   $ref: '#/components/parameters/searchText'
+                -   $ref: '#/components/parameters/start'
+                -   $ref: '#/components/parameters/count'
+            responses:
+                200:
+                    description: List of devices with rule count
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    device_list:
+                                        type: object
+                                        properties:
+                                            device:
+                                                type: array
+                                                items:
+                                                    properties:
+                                                        device_id:
+                                                            type: integer
+                                                        revision_id:
+                                                            type: integer
+                                                        rule_count:
+                                                            type: integer
+                400:
+                    description: Value is missing or not valid
+    /securetrack/api/rule_search/{deviceId}.json:
         get:
             operationId: UnusedRules
             summary: Retrieve unused rules from a device based on the device id.
             parameters:
                 -   in: path
                     name: deviceId
-                    schema:
-                        type: string
                     required: true
                     description: The device id to lookup for unused rules
+                    schema:
+                        type: integer
+                -   $ref: '#/components/parameters/searchText'
+                -   $ref: '#/components/parameters/start'
+                -   $ref: '#/components/parameters/count'
             responses:
                 200:
-                    description: Success
-                404:
-                    description: Value is missing or not valid
-    /securetrack/api/rule_search.json?lasthitgreater:%2030%20rule.isdisabled:false%20action:allow:
-        get:
-            operationId: UnusedRulesPerDevice
-            summary: Retrieve unused rule count based on the device id in SecureTrack.
-            responses:
-                200:
-                    description: OK
+                    description: Return object of unused rules
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    rules:
+                                        type: object
+                                        properties:
+                                            count:
+                                                type: integer
+                                            total:
+                                                type: integer
+                                            rule:
+                                                type: array
                 404:
                     description: Value is missing or not valid
     /securetrack/api/devices/{deviceId}.json:
@@ -41,19 +80,53 @@ paths:
             parameters:
                 -   in: path
                     name: deviceId
-                    schema:
-                        type: string
                     required: true
                     description: The device id to lookup for unused rules
+                    schema:
+                        type: string
             responses:
                 200:
                     description: OK
-    /securechangeworkflow/api/securechange/workflows/active_workflows.json?type=RULE_DECOMMISSION:
+    /securechangeworkflow/api/securechange/workflows/active_workflows.json:
         get:
             operationId: RuleDecommissionWorkflows
             summary: Rule decommission workflow list for mitigating security issues, such as disabling unused rules.
+            parameters:
+                -   in: query
+                    name: type
+                    required: true
+                    schema:
+                        type: string
+                        default: RULE_DECOMMISSION
             responses:
                 200:
                     description: OK
                 400:
                     description: <TYPE> is not a valid workflow type
+
+components:
+    parameters:
+        searchText:
+            in: query
+            name: search_text
+            required: true
+            schema:
+                type: string
+                default: 'lasthitgreater:30 rule.isdisabled:false action:allow'
+        start:
+            in: query
+            name: start
+            required: true
+            schema:
+                type: integer
+                default: 0
+                minimum: 0
+        count:
+            in: query
+            name: count
+            required: true
+            schema:
+                type: integer
+                default: 3
+                minimum: 1
+                maximum: 10
