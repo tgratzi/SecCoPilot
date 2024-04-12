@@ -9,14 +9,10 @@ servers:
     - url: https://86bd-108-20-176-8.ngrok-free.app/
 
 paths:
-    /securetrack/api/rule_search.json:
+    /securetrack/api/rule_search.json?search_text=lasthitgreater:%2030%20rule.isdisabled:false%20action:allow:
         get:
             operationId: UnusedRulesPerDevice
             summary: Retrieve unused rule count based on the device id in SecureTrack.
-            parameters:
-                -   $ref: '#/components/parameters/searchText'
-                -   $ref: '#/components/parameters/start'
-                -   $ref: '#/components/parameters/count'
             responses:
                 200:
                     description: List of devices with rule count
