@@ -9,13 +9,15 @@ servers:
     - url: https://86bd-108-20-176-8.ngrok-free.app/
 
 paths:
-    /securetrack/api/rule_search.json?search_text=lasthitgreater:30%20rule.isdisabled:false%20action:allow:
+    /securetrack/api/rule_search.json:
         get:
             operationId: UnusedRules
-            summary: Retrieve unused rule count based on the device id in SecureTrack.
+            summary: Shows the count of unused rules per device.
+            parameters:
+                -   $ref: '#/components/parameters/searchText'
             responses:
                 200:
-                    description: List of devices with rule count
+                    description: List of devices with an unused rule count per device.
                     content:
                         application/json:
                             schema:
@@ -26,14 +28,6 @@ paths:
                                         properties:
                                             device:
                                                 type: array
-                                                items:
-                                                    properties:
-                                                        device_id:
-                                                            type: integer
-                                                        revision_id:
-                                                            type: integer
-                                                        rule_count:
-                                                            type: integer
                 400:
                     description: Value is missing or not valid
     /securetrack/api/rule_search/{deviceId}.json:
@@ -101,8 +95,9 @@ components:
             required: true
             schema:
                 type: string
-                default: 'lasthitgreater:30 rule.isdisabled:false action:allow'
+                default: 'lasthitgreater:30%20rule.isdisabled:false%20action:allow'
             allowEmptyValue: false
+            allowReserved: true
         start:
             in: query
             name: start
