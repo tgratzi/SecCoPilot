@@ -85,17 +85,10 @@ paths:
             responses:
                 200:
                     description: OK
-    /securechangeworkflow/api/securechange/workflows/active_workflows.json:
+    /securechangeworkflow/api/securechange/workflows/active_workflows.json?type=RULE_DECOMMISSION:
         get:
             operationId: RuleDecommissionWorkflows
             summary: Rule decommission workflow list for mitigating security issues, such as disabling unused rules.
-            parameters:
-                -   in: query
-                    name: type
-                    required: true
-                    schema:
-                        type: string
-                        default: RULE_DECOMMISSION
             responses:
                 200:
                     description: OK
