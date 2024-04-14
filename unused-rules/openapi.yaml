@@ -104,6 +104,7 @@ components:
             schema:
                 type: string
                 default: 'lasthitgreater:30 rule.isdisabled:false action:allow'
+            allowEmptyValue: false
         start:
             in: query
             name: start
