@@ -8,4 +8,4 @@ Descriptor:
 SkillGroups:
     -   Format: API
         Settings:
-            OpenApiSpecUrl: https://raw.githubusercontent.com/tgratzi/SecCoPilot/master/openapi.yaml
+            OpenApiSpecUrl: https://raw.githubusercontent.com/tgratzi/SecCoPilot/master/unused-rules/openapi.yaml

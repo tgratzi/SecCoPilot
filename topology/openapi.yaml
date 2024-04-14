@@ -1,0 +1,58 @@
+openapi: 3.0.0
+
+info:
+    title: Path calculation results using TOS
+    description: Path calculation results using TOS.
+    version: 1.0.0
+
+servers:
+    - url: https://86bd-108-20-176-8.ngrok-free.app/
+
+paths:
+    /securetrack/api/topology/path.json:
+        get:
+            operationId: topologyPath
+            summary: Get path for specified traffic.
+            parameters:
+                -   $ref: '#/components/parameters/searchText'
+            responses:
+                200:
+                    description: Path calculation results
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    path_calc_results:
+                                        type: object
+                                        properties:
+                                            traffic_allowed:
+                                                type: boolean
+                                            device_info:
+                                                type: object
+                400:
+                    description: Value is missing or not valid
+
+components:
+    parameters:
+        src:
+            in: query
+            name: src
+            required: true
+            schema:
+                type: string
+                default: 'any'
+        dst:
+            in: query
+            name: dst
+            required: true
+            schema:
+                type: string
+                default: 'any'
+        service:
+            in: query
+            name: service
+            required: true
+            schema:
+                type: string
+                default: 'any'

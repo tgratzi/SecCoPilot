@@ -1,0 +1,11 @@
+Descriptor:
+    Name: Tufin Firewall Management
+    DisplayName: Tufin Firewall Management
+    Description:  Investigate whether there is a path between selected sources and destinations, and which devices exist in the path.
+    SupportedAuthTypes:
+        - Basic
+
+SkillGroups:
+    -   Format: API
+        Settings:
+            OpenApiSpecUrl: https://raw.githubusercontent.com/tgratzi/SecCoPilot/master/topology/openapi.yaml
