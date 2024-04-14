@@ -9,12 +9,10 @@ servers:
     - url: https://86bd-108-20-176-8.ngrok-free.app/
 
 paths:
-    /securetrack/api/rule_search.json:
+    /securetrack/api/rule_search.json?lasthitgreater:30%20rule.isdisabled:false%20action:allow:
         get:
             operationId: UnusedRules
             summary: Shows the count of unused rules per device.
-            parameters:
-                -   $ref: '#/components/parameters/searchText'
             responses:
                 200:
                     description: List of devices with an unused rule count per device.
@@ -91,11 +89,11 @@ components:
     parameters:
         searchText:
             in: query
-            name: search_text
+            name: 'search_text'
             required: true
             schema:
                 type: string
-                default: 'lasthitgreater:30%20rule.isdisabled:false%20action:allow'
+                default: 'lasthitgreater:30 rule.isdisabled:false action:allow'
             allowEmptyValue: false
             allowReserved: true
         start:
