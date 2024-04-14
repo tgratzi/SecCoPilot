@@ -28,7 +28,7 @@ paths:
                                                 type: array
                 400:
                     description: Value is missing or not valid
-    /securetrack/api/rule_search/{deviceId}.json:
+    /securetrack/api/rule_search/{deviceId}.json?lasthitgreater:30%20rule.isdisabled:false%20action:allow:
         get:
             operationId: UnusedRulesPerDevice
             summary: Retrieve unused rules from a device based on the device id.
@@ -39,7 +39,6 @@ paths:
                     description: The device id to lookup for unused rules
                     schema:
                         type: integer
-                -   $ref: '#/components/parameters/searchText'
                 -   $ref: '#/components/parameters/start'
                 -   $ref: '#/components/parameters/count'
             responses:
