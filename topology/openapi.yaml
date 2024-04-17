@@ -20,18 +20,6 @@ paths:
             responses:
                 200:
                     description: Path calculation results
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    path_calc_results:
-                                        type: object
-                                        properties:
-                                            traffic_allowed:
-                                                type: boolean
-                                            device_info:
-                                                type: object
                 400:
                     description: Value is missing or not valid
 
@@ -41,6 +29,7 @@ components:
             in: query
             name: src
             required: true
+            allowEmptyValue: false
             schema:
                 type: string
                 default: 'any'
@@ -48,6 +37,7 @@ components:
             in: query
             name: dst
             required: true
+            allowEmptyValue: false
             schema:
                 type: string
                 default: 'any'
@@ -55,6 +45,7 @@ components:
             in: query
             name: service
             required: true
+            allowEmptyValue: false
             schema:
                 type: string
                 default: 'any'
