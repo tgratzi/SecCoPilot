@@ -14,7 +14,9 @@ paths:
             operationId: topologyPath
             summary: Get path for specified traffic.
             parameters:
-                -   $ref: '#/components/parameters/searchText'
+                -   $ref: '#/components/parameters/src'
+                -   $ref: '#/components/parameters/dst'
+                -   $ref: '#/components/parameters/srv'
             responses:
                 200:
                     description: Path calculation results
@@ -49,7 +51,7 @@ components:
             schema:
                 type: string
                 default: 'any'
-        service:
+        srv:
             in: query
             name: service
             required: true
