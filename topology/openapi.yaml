@@ -22,15 +22,6 @@ paths:
                     description: Path calculation results
                 400:
                     description: Value is missing or not valid
-    /securechangeworkflow/api/securechange/workflows/active_workflows.json?type=ACCESS_REQUEST:
-        get:
-            operationId: AccessRequestWorkflows
-            summary: Access-Request workflow can allow or block traffic to a service from source to destination.
-            responses:
-                200:
-                    description: OK
-                400:
-                    description: <TYPE> is not a valid workflow type
 
 components:
     parameters:
