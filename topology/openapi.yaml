@@ -22,6 +22,24 @@ paths:
                     description: Path calculation results
                 400:
                     description: Value is missing or not valid
+    /securechangeworkflow/api/securechange/workflows/active_workflows.json:
+        get:
+            operationId: RuleDecommissionWorkflows
+            summary: Returns workflow list.
+            responses:
+                200:
+                    description: OK
+                400:
+                    description: <TYPE> is not a valid workflow type
+    /securechangeworkflow/api/securechange/workflows/active_workflows.json?type=ACCESS_REQUEST:
+        get:
+            operationId: RuleDecommissionWorkflows
+            summary: Access-Request workflow list for allowing or blocking access request from source to destination and service.
+            responses:
+                200:
+                    description: OK
+                400:
+                    description: <TYPE> is not a valid workflow type
 
 components:
     parameters:
