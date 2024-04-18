@@ -24,8 +24,8 @@ paths:
                     description: Value is missing or not valid
     /securechangeworkflow/api/securechange/workflows/active_workflows.json:
         get:
-            operationId: RuleDecommissionWorkflows
-            summary: Returns workflow list.
+            operationId: ActiveWorkflowList
+            summary: Returns active workflow list defined in SecureChange.
             responses:
                 200:
                     description: OK
@@ -33,8 +33,8 @@ paths:
                     description: <TYPE> is not a valid workflow type
     /securechangeworkflow/api/securechange/workflows/active_workflows.json?type=ACCESS_REQUEST:
         get:
-            operationId: RuleDecommissionWorkflows
-            summary: Access-Request workflow list for allowing or blocking access request from source to destination and service.
+            operationId: AccessRequestWorkflows
+            summary: Access-Request workflow can allow or block traffic to a service from source to destination.
             responses:
                 200:
                     description: OK
