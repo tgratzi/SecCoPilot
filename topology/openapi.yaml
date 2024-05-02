@@ -6,7 +6,7 @@ info:
     version: 1.0.0
 
 servers:
-    - url: https://44db-108-20-176-8.ngrok-free.app/
+    - url: https://122c-8-2-177-140.ngrok-free.app
 
 paths:
     /securetrack/api/topology/path.json:
