@@ -6,7 +6,7 @@ info:
     version: 1.0.0
 
 servers:
-    - url: https://6ffb-8-2-177-140.ngrok-free.app
+    - url: https://tos-pilot.tufin.com
 
 paths:
     /securetrack/api/topology/path.json:
