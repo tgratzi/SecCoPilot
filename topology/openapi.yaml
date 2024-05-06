@@ -40,6 +40,80 @@ paths:
                     description: OK
                 400:
                     description: <TYPE> is not a valid workflow type
+    /securetrack/api/rule_search.json?lasthitgreater:30%20rule.isdisabled:false%20action:allow:
+        get:
+            operationId: UnusedRules
+            summary: Shows the count of unused rules per device.
+            responses:
+                200:
+                    description: List of devices with an unused rule count per device.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    device_list:
+                                        type: object
+                                        properties:
+                                            device:
+                                                type: array
+                400:
+                    description: Value is missing or not valid
+    /securetrack/api/rule_search/{deviceId}.json?lasthitgreater:30%20rule.isdisabled:false%20action:allow:
+        get:
+            operationId: UnusedRulesPerDevice
+            summary: Retrieve unused rules from a device based on the device id.
+            parameters:
+                -   in: path
+                    name: deviceId
+                    required: true
+                    description: The device id to lookup for unused rules
+                    schema:
+                        type: integer
+                -   $ref: '#/components/parameters/start'
+                -   $ref: '#/components/parameters/count'
+            responses:
+                200:
+                    description: Return object of unused rules
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    rules:
+                                        type: object
+                                        properties:
+                                            count:
+                                                type: integer
+                                            total:
+                                                type: integer
+                                            rule:
+                                                type: array
+                404:
+                    description: Value is missing or not valid
+    /securetrack/api/devices/{deviceId}.json:
+        get:
+            operationId: UnusedRulesDeviceInformation
+            summary: Get device details based on the device id the way it is stored in SecureTrack.
+            parameters:
+                -   in: path
+                    name: deviceId
+                    required: true
+                    description: The device id to lookup for unused rules
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: OK
+    /securechangeworkflow/api/securechange/workflows/active_workflows.json?type=RULE_DECOMMISSION:
+        get:
+            operationId: RuleDecommissionWorkflows
+            summary: Rule decommission workflow list for mitigating security issues, such as disabling unused rules.
+            responses:
+                200:
+                    description: OK
+                400:
+                    description: <TYPE> is not a valid workflow type
 
 components:
     parameters:
@@ -67,3 +141,29 @@ components:
             schema:
                 type: string
                 default: 'any'
+        searchText:
+            in: query
+            name: 'search_text'
+            required: true
+            schema:
+                type: string
+                default: 'lasthitgreater:30 rule.isdisabled:false action:allow'
+            allowEmptyValue: false
+            allowReserved: true
+        start:
+            in: query
+            name: start
+            required: true
+            schema:
+                type: integer
+                default: 0
+                minimum: 0
+        count:
+            in: query
+            name: count
+            required: true
+            schema:
+                type: integer
+                default: 3
+                minimum: 3
+                maximum: 10
