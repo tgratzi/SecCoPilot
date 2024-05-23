@@ -7,7 +7,7 @@ info:
 
 servers:
 #    - url: https://tos-pilot.tufin.com
-    - url: https://5652-8-2-177-140.ngrok-free.app
+    - url: https://b0c2-8-2-177-140.ngrok-free.app
 
 paths:
     /securetrack/api/topology/path.json:
