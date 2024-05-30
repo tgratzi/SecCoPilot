@@ -4,6 +4,13 @@ Descriptor:
     Description:  Investigate whether there is a path between selected sources and destinations, and which devices exist in the path.
     SupportedAuthTypes:
         - Basic
+    Settings:
+        -   Description: The URL of the instance to connect to
+            HintText: e.g. https://<insert_tenant_here>.goskope.com/api/v2/
+            Label: Netskope Instance URL
+            Name: NetskopeInstanceURL
+            Required: true
+            SettingType: String
 
 SkillGroups:
     -   Format: API
