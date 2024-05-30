@@ -16,3 +16,4 @@ SkillGroups:
     -   Format: API
         Settings:
             OpenApiSpecUrl: https://raw.githubusercontent.com/tgratzi/SecCoPilot/master/topology/openapi.yaml
+            EndpointUrlSettingName: NetskopeInstanceURL
