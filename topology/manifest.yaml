@@ -2,15 +2,13 @@ Descriptor:
     Name: Tufin Firewall Management
     DisplayName: Tufin Firewall Management
     Description:  Investigate whether there is a path between selected sources and destinations, and which devices exist in the path.
+#    SupportedAuthTypes:
+#        - Basic
     SupportedAuthTypes:
-        - Basic
-    Settings:
-        -   Description: The URL of the instance to connect to
-            HintText: e.g. https://<insert_tenant_here>.goskope.com/api/v2/
-            Label: Netskope Instance URL
-            Name: NetskopeInstanceURL
-            Required: true
-            SettingType: String
+        - AAD
+    Authorization:
+        Type: AAD
+        EntraScopes: https://graph.microsoft.com/.default
 
 SkillGroups:
     -   Format: API
