@@ -2,8 +2,15 @@ Descriptor:
     Name: Tufin Firewall Management
     DisplayName: Tufin Firewall Management
     Description:  Investigate whether there is a path between selected sources and destinations, and which devices exist in the path.
+#    SupportedAuthTypes:
+#        - Basic
     SupportedAuthTypes:
-        - Basic
+        - ApiKey
+    Authorization:
+        Type: APIKey
+        Key: Key
+        Location: Header
+        AuthScheme: ''
 
 SkillGroups:
     -   Format: API
