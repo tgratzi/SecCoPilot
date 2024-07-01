@@ -10,7 +10,7 @@ servers:
     - url: https://edfe-108-20-176-8.ngrok-free.app
 
 paths:
-    /securetrack/api/topology/path.json:
+    /ms-copilot/securetrack/api/topology/path.json:
         get:
             operationId: topologyPath
             summary: Get path for specified traffic.
@@ -23,7 +23,7 @@ paths:
                     description: Path calculation results
                 400:
                     description: Value is missing or not valid
-    /securechangeworkflow/api/securechange/workflows/active_workflows.json:
+    /ms-copilot/securechangeworkflow/api/securechange/workflows/active_workflows.json:
         get:
             operationId: ActiveWorkflowList
             summary: Returns active workflow list defined in SecureChange.
@@ -32,7 +32,7 @@ paths:
                     description: OK
                 400:
                     description: <TYPE> is not a valid workflow type
-    /securechangeworkflow/api/securechange/workflows/active_workflows.json?type=ACCESS_REQUEST:
+    /ms-copilot/securechangeworkflow/api/securechange/workflows/active_workflows.json?type=ACCESS_REQUEST:
         get:
             operationId: AccessRequestWorkflows
             summary: The Access-Request workflow can either allow or block traffic to a service from the source to the destination.
@@ -41,7 +41,7 @@ paths:
                     description: OK
                 400:
                     description: <TYPE> is not a valid workflow type
-    /securetrack/api/rule_search.json?lasthitgreater:30%20rule.isdisabled:false%20action:allow:
+    /ms-copilot/securetrack/api/rule_search.json?lasthitgreater:30%20rule.isdisabled:false%20action:allow:
         get:
             operationId: UnusedRules
             summary: Shows the count of unused rules per device.
@@ -60,7 +60,7 @@ paths:
                                                 type: array
                 400:
                     description: Value is missing or not valid
-    /securetrack/api/rule_search/{deviceId}.json?lasthitgreater:30%20rule.isdisabled:false%20action:allow:
+    /ms-copilot/securetrack/api/rule_search/{deviceId}.json?lasthitgreater:30%20rule.isdisabled:false%20action:allow:
         get:
             operationId: UnusedRulesPerDevice
             summary: Retrieve unused rules from a device based on the device id.
@@ -92,7 +92,7 @@ paths:
                                                 type: array
                 404:
                     description: Value is missing or not valid
-    /securetrack/api/devices/{deviceId}.json:
+    /ms-copilot/securetrack/api/devices/{deviceId}.json:
         get:
             operationId: UnusedRulesDeviceInformation
             summary: Get device details based on the device id the way it is stored in SecureTrack.
@@ -106,7 +106,7 @@ paths:
             responses:
                 200:
                     description: OK
-    /securechangeworkflow/api/securechange/workflows/active_workflows.json?type=RULE_DECOMMISSION:
+    /ms-copilot/securechangeworkflow/api/securechange/workflows/active_workflows.json?type=RULE_DECOMMISSION:
         get:
             operationId: RuleDecommissionWorkflows
             summary: Rule decommission workflow list for mitigating security issues, such as disabling unused rules.
