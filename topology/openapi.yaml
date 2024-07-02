@@ -7,7 +7,7 @@ info:
 
 servers:
 #    - url: https://tos-pilot.tufin.com
-    - url: https://edfe-108-20-176-8.ngrok-free.app
+    - url: https://4c46-108-20-176-8.ngrok-free.app
 
 paths:
     /ms-copilot/securetrack/api/topology/path.json:
